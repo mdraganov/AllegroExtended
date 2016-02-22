@@ -4,9 +4,8 @@
     using System.ComponentModel.DataAnnotations;
 
     using AllegroExtended.Common;
-    using AllegroExtended.Data.Models;
-    using AllegroExtended.Web.Infrastructure.Mapping;
-    public class AccountRequestViewModel : IMapFrom<AccountRequest>
+
+    public class AccountRequestViewModel
     {
         [Required]
         [EmailAddress]
