@@ -1,0 +1,16 @@
+﻿@model AllegroExtended.Web.Areas.Users.ViewModels.AccountRequestViewModel
+@{
+    ViewBag.Title = "Log in";
+}
+
+<div class="modal show">
+    <div class="modal-dialog">
+        <section id="loginForm" class="modal-content">
+            @Html.EditorFor(m => m)
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
