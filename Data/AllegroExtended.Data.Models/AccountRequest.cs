@@ -5,7 +5,7 @@
     using AllegroExtended.Common;
     using AllegroExtended.Data.Common.Models;
 
-    public class AccountRequest : BaseModel<int>
+    public class AccountRequest : BaseModel<int>, IAuditInfo
     {
         [Required]
         [EmailAddress]

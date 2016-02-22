@@ -2,8 +2,9 @@
 {
     using System;
     using System.Linq;
-    using AllegroExtended.Data.Models;
+
     using AllegroExtended.Data.Common;
+    using AllegroExtended.Data.Models;
 
     public class AccountRequestService : IAccountRequestService
     {
@@ -22,6 +23,7 @@
         public void Add(AccountRequest request)
         {
             this.requests.Add(request);
+            this.requests.Save();
         }
 
         public void Delete(int id)
@@ -29,6 +31,7 @@
             var request = this.GetById(id);
 
             this.requests.Delete(request);
+            this.requests.Save();
         }
 
         public IQueryable<AccountRequest> GetAll()
