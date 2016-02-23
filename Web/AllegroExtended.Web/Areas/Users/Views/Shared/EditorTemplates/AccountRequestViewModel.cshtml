@@ -25,10 +25,10 @@
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(m => m.Department, new { @class = "col-md-offset-1 col-md-2 pull-left control-label" })
+        @Html.LabelFor(m => m.Group, new { @class = "col-md-offset-1 col-md-2 pull-left control-label" })
         <div class="col-md-8">
-            @Html.TextAreaFor(m => m.Department, new { @class = "form-control", placeholder = "Enter your department or multiple ones to be approved for permissons from multiple groups." })
-            @Html.ValidationMessageFor(m => m.Department, "", new { @class = "text-danger" })
+            @Html.DropDownListFor(m => m.Group, new List<SelectListItem> {}, new { @class = "form-control", id = "dd-groups"})
+            @Html.ValidationMessageFor(m => m.Group, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group">

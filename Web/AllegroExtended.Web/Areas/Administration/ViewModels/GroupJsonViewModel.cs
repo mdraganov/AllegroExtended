@@ -4,8 +4,10 @@
     using AllegroExtended.Data.Models;
     using AllegroExtended.Web.Infrastructure.Mapping;
 
-    public class AccountRequestDetailsViewModel : AccountRequestListViewModel
+    public class GroupJsonViewModel : IMapFrom<Group>
     {
-        public string Remark { get; set; }
+        public string Id { get; set; }
+
+        public string Name { get; set; }
     }
 }

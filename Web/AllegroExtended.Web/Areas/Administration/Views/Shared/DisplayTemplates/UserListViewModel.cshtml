@@ -1,4 +1,4 @@
-﻿@model AllegroExtended.Web.Areas.Administration.ViewModels.UserViewModel
+﻿@model AllegroExtended.Web.Areas.Administration.ViewModels.UserListViewModel
 
 @{
     Layout = null;
@@ -8,5 +8,6 @@
     <td>@this.ViewBag.Row</td>
     <td>@Model.Email</td>
     <td>@Model.UserName</td>
+    <td>@Model.Group</td>
     <td><a href="delete/@Model.Id" class="btn btn-danger">Delete</a></td>
 </tr>

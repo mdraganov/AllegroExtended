@@ -13,4 +13,12 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        jQuery.getJSON("/administration/group/allasync", "", function (data) {
+            jQuery(data).each(function (index, element) {
+                var newGroupElement = $("<option value=\"" + element.Id + "\">" + element.Name + "</option>" );
+                $("#dd-groups").append(newGroupElement);
+            });
+        });
+    </script>
 }

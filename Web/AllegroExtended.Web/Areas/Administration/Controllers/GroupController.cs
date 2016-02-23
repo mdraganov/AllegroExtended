@@ -10,11 +10,14 @@
     using AllegroExtended.Web.Controllers;
     using Infrastructure.Mapping;
 
-    public class RequestController : AdminBaseController
+    public class GroupController : AdminBaseController
     {
-        public RequestController(IAccountRequestService requests)
+        private readonly IGroupService groups;
+
+        public GroupController(IAccountRequestService requests, IGroupService groups)
             : base(requests)
         {
+            this.groups = groups;
         }
 
         [HttpGet]
@@ -23,26 +26,24 @@
             var request = this.requests.GetById(id);
             var model = this.Mapper.Map<AccountRequestDetailsViewModel>(request);
 
-            // custom atomapper mappig is set for this but for now it does not work for some reason
-            model.Group = request.Group.Name;
-
             return this.View(model);
         }
 
         [HttpGet]
         public ActionResult All()
         {
-            var requests = this.requests.GetAll().To<AccountRequestListViewModel>().ToList();
+            var groups = this.groups.GetAll().To<GroupViewModel>().ToList();
 
-            return this.View(requests);
+            return this.View(groups);
         }
 
         [HttpGet]
-        public ActionResult AllUnread()
+        [AllowAnonymous]
+        public JsonResult AllAsync()
         {
-            var requests = this.requests.GetAllUnread().To<AccountRequestListViewModel>().ToList();
+            var groups = this.groups.GetAll().To<GroupJsonViewModel>().ToList();
 
-            return this.View(requests);
+            return this.Json(groups, JsonRequestBehavior.AllowGet);
         }
     }
 }

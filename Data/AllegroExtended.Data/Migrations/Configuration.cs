@@ -21,14 +21,27 @@
         {
             const string AdministratorUserName = "admin@admin.com";
             const string AdministratorPassword = AdministratorUserName;
+            
+            if (!context.Groups.Any())
+            {
+                context.Groups.Add(new Group { Name = "Back Office" });
+                context.Groups.Add(new Group { Name = "Accounting" });
+                context.Groups.Add(new Group { Name = "Credit Risk" });
+                context.Groups.Add(new Group { Name = "Trading" });
+                context.Groups.Add(new Group { Name = "Corporate Finance" });
+
+                context.SaveChanges();
+            }
 
             if (!context.Roles.Any())
             {
                 // Create admin role
                 var roleStore = new RoleStore<IdentityRole>(context);
                 var roleManager = new RoleManager<IdentityRole>(roleStore);
-                var role = new IdentityRole { Name = GlobalConstants.AdministratorRoleName };
-                roleManager.Create(role);
+                var roleAdmin = new IdentityRole { Name = GlobalConstants.AdministratorRoleName };
+                var roleUser = new IdentityRole { Name = GlobalConstants.UserRoleName };
+                roleManager.Create(roleAdmin);
+                roleManager.Create(roleUser);
 
                 // Create admin user
                 var userStore = new UserStore<ApplicationUser>(context);

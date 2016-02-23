@@ -12,10 +12,12 @@
     public class RequestController : BaseController
     {
         private readonly IAccountRequestService requests;
+        private readonly IGroupService groups;
 
-        public RequestController(IAccountRequestService requests)
+        public RequestController(IAccountRequestService requests, IGroupService groups)
         {
             this.requests = requests;
+            this.groups = groups;
         }
 
         [HttpGet]
@@ -30,12 +32,14 @@
         {
             if (this.ModelState.IsValid)
             {
+                var group = this.groups.GetById(request.Group);
+
                 var newRequest = new AccountRequest()
                 {
                     Email = request.Email,
                     UserName = request.UserName,
                     Remark = request.Remark,
-                    //Gruop = request.Group
+                    Group = group
                 };
 
                 this.requests.Add(newRequest);

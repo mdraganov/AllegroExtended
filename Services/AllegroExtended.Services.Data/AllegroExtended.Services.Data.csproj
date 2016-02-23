@@ -59,13 +59,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GroupService.cs" />
     <Compile Include="AccountRequestService.cs" />
+    <Compile Include="IGroupService.cs" />
     <Compile Include="IAccountRequestService.cs" />
     <Compile Include="IUserService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\AllegroExtended.Common\AllegroExtended.Common.csproj">
+      <Project>{701f322f-aa01-4ddc-90b6-6935981c1e73}</Project>
+      <Name>AllegroExtended.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Data\AllegroExtended.Data.Common\AllegroExtended.Data.Common.csproj">
       <Project>{edfe3c57-ef5b-4636-9ecc-d0baca6b6379}</Project>
       <Name>AllegroExtended.Data.Common</Name>

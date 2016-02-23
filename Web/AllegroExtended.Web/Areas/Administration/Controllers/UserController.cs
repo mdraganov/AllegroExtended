@@ -13,42 +13,51 @@ namespace AllegroExtended.Web.Areas.Administration.Controllers
     using AllegroExtended.Services.Data;
     using AllegroExtended.Web.Areas.Administration.ViewModels;
     using AllegroExtended.Web.Controllers;
+    using Data;
     using Infrastructure.Mapping;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
 
     public class UserController : AdminBaseController
     {
         private readonly IUserService users;
+        private readonly IGroupService groups;
 
-        public UserController(IAccountRequestService requests, IUserService users)
+        public UserController(IAccountRequestService requests, IUserService users, IGroupService groups)
             : base(requests)
         {
             this.users = users;
+            this.groups = groups;
         }
 
-        [HttpGet]
-        public ActionResult Details(int id = 1)
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(UserViewModel model)
         {
-            var request = this.requests.GetById(id);
-            var model = this.Mapper.Map<AccountRequestDetailsViewModel>(request);
+            if (this.ModelState.IsValid)
+            {
+                var group = this.groups.GetById(model.Group);
 
-            return this.View(model);
+                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email, Group = group };
+
+                this.users.Add(user, model.Password);
+
+                this.TempData["Notification"] = "User Created!";
+
+                return this.Redirect("request/all");
+            }
+
+            this.TempData["Notification"] = "User Not Created!";
+
+            return this.Redirect("/administration/request/all");
         }
 
         [HttpGet]
         public ActionResult All()
         {
-            var users = this.users.GetAll().To<UserViewModel>().ToList();
+            var users = this.users.GetAll().To<UserListViewModel>().ToList();
 
             return this.View(users);
         }
-
-        [HttpGet]
-        public ActionResult AllUnread()
-        {
-            var requests = this.requests.GetAllUnread().To<AccountRequestViewModel>().ToList();
-
-            return this.View(requests);
-        }
-
     }
 }

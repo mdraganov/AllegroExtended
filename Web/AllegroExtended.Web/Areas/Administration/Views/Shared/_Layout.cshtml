@@ -11,15 +11,15 @@
             <div class="panel-body">
                 <ul class="list-group">
                     <li class="list-group-item">
-                        <a href="allunread">New Account Requests</a>
+                        <a href="/administration/request/allunread">New Account Requests</a>
                         <span class="badge">@this.ViewBag.NewAccountRequests</span>
                     </li>
                     <li class="list-group-item">
-                        <a href="all">All Account Requests</a>
-                        <span class="badge">@this.ViewBag.AllAccountRequests</span>                        
+                        <a href="/administration/request/all">All Account Requests</a>
+                        <span class="badge">@this.ViewBag.AllAccountRequests</span>
                     </li>
                     <li class="list-group-item">
-                        <a href="/administration/user/all">Users</a>                     
+                        <a href="/administration/user/all">Users</a>
                     </li>
                     <li class="list-group-item">
                         <a href="#">Groups</a>
@@ -32,3 +32,6 @@
         @RenderBody()
     </div>
 </div>
+@section Scripts{
+    @RenderSection("scripts", required: false)
+}

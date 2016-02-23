@@ -17,7 +17,8 @@
         [MaxLength(GlobalConstants.UserNameMaxLength)]
         public string UserName { get; set; }
 
-        public string Group { get; set; }
+        [DisplayName("Department")]
+        public int Group { get; set; }
 
         [MaxLength(200)]
         [DataType(DataType.MultilineText)]

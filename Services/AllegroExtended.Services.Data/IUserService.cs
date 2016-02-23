@@ -10,6 +10,8 @@
 
         IQueryable<ApplicationUser> GetAll();
 
+        void Add(ApplicationUser user, string password);
+
         void Delete(string id);
     }
 }

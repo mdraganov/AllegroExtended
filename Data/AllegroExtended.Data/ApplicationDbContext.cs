@@ -4,11 +4,9 @@
     using System.Data.Entity;
     using System.Linq;
 
-    using Common.Models;
-
-    using Microsoft.AspNet.Identity.EntityFramework;
-
+    using AllegroExtended.Data.Common.Models;
     using AllegroExtended.Data.Models;
+    using Microsoft.AspNet.Identity.EntityFramework;
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
@@ -17,7 +15,11 @@
         {
         }
 
-        public IDbSet<AccountRequest> Requests { get; set; }
+        public IDbSet<AccountRequest> AccountRequests { get; set; }
+
+        public IDbSet<Group> Groups { get; set; }
+
+        public IDbSet<Permission> Permissions { get; set; }
 
         public static ApplicationDbContext Create()
         {
