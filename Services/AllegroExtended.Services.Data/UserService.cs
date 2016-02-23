@@ -45,7 +45,6 @@
                 RequireNonLetterOrDigit = false
             };
 
-            //var user2 = new ApplicationUser { UserName = "someone@some.com", Email = "someone@some.com" };
             userManager.Create(user, password);
 
             userManager.AddToRole(user.Id, GlobalConstants.UserRoleName);

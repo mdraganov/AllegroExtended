@@ -1,6 +1,6 @@
 ﻿@model AllegroExtended.Web.Areas.Administration.ViewModels.AccountRequestDetailsViewModel
 
-<form action="/Administration/User/Create" class="form form-horizontal" method="post" role="form" novalidate="novalidate">
+<form action="/Administration/User/Create?requestId=@Model.Id" class="form form-horizontal" method="post" role="form" novalidate="novalidate">
     @Html.AntiForgeryToken()
     <div class="validation-summary-valid text-danger" data-valmsg-summary="true">
         <ul>

@@ -32,26 +32,37 @@ namespace AllegroExtended.Web.Areas.Administration.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(UserViewModel model)
+        public ActionResult Create(UserViewModel model, int requestId)
         {
-            if (this.ModelState.IsValid)
+            try
             {
-                var group = this.groups.GetById(model.Group);
+                if (this.ModelState.IsValid)
+                {
+                    var group = this.groups.GetById(model.Group);
 
-                var user = new ApplicationUser { UserName = model.UserName, Email = model.Email, Group = group };
+                    var user = new ApplicationUser { UserName = model.UserName, Email = model.Email, Group = group };
 
-                this.users.Add(user, model.Password);
+                    this.users.Add(user, model.Password);
 
-                this.TempData["Notification"] = "User Created!";
+                    this.TempData["Notification"] = "User Created!";
+
+                    this.requests.Delete(requestId);
+
+                    return this.Redirect("/administration/request/all");
+                }
+
+                this.TempData["Notification"] = string.Join("; ", ModelState.Values
+                                                        .SelectMany(x => x.Errors)
+                                                        .Select(x => x.ErrorMessage));
 
                 return this.Redirect("/administration/request/all");
             }
+            catch (Exception ex)
+            {
+                this.TempData["Notification"] = ex.Message;
 
-            this.TempData["Notification"] = string.Join("; ", ModelState.Values
-                                                    .SelectMany(x => x.Errors)
-                                                    .Select(x => x.ErrorMessage)); //"An error occured. User Not Created!";
-
-            return this.Redirect("/administration/request/all");
+                return this.Redirect("/administration/request/all");
+            }
         }
 
         [HttpGet]
@@ -60,6 +71,16 @@ namespace AllegroExtended.Web.Areas.Administration.Controllers
             var users = this.users.GetAll().To<UserListViewModel>().ToList();
 
             return this.View(users);
+        }
+
+        [HttpGet]
+        public ActionResult Delete(string id)
+        {
+            this.users.Delete(id);
+
+            this.TempData["Notification"] = "User Deleted!";
+
+            return this.Redirect("/administration/user/all");
         }
     }
 }

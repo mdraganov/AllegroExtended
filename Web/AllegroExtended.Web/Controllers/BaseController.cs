@@ -1,9 +1,10 @@
 ﻿namespace AllegroExtended.Web.Controllers
 {
     using System.Web.Mvc;
+
+    using AllegroExtended.Services.Web;
     using AutoMapper;
     using Infrastructure.Mapping;
-    using AllegroExtended.Services.Web;
 
     [Authorize]
     public abstract class BaseController : Controller

@@ -1,4 +1,6 @@
 ﻿@model AllegroExtended.Web.Areas.Administration.ViewModels.UserListViewModel
+@using AllegroExtended.Common
+@using Microsoft.AspNet.Identity
 
 @{
     Layout = null;
@@ -9,5 +11,11 @@
     <td>@Model.Email</td>
     <td>@Model.UserName</td>
     <td>@Model.Group</td>
-    <td><a href="delete/@Model.Id" class="btn btn-danger">Delete</a></td>
+    <td>
+        @if (this.User.Identity.GetUserId() != Model.Id)
+        {
+            <a href="delete/@Model.Id" class="btn btn-danger">Delete</a>
+        }
+    </td>
+
 </tr>
