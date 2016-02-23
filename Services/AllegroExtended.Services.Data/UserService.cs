@@ -25,7 +25,7 @@
 
         public IQueryable<ApplicationUser> GetAll()
         {
-            return this.db.Users.Where(u => true);
+            return this.db.Users.AsQueryable();
         }
 
         public ApplicationUser GetById(string id)

@@ -1,0 +1,12 @@
+﻿@model AllegroExtended.Web.Areas.Administration.ViewModels.UserViewModel
+
+@{
+    Layout = null;
+}
+
+<tr>
+    <td>@this.ViewBag.Row</td>
+    <td>@Model.Email</td>
+    <td>@Model.UserName</td>
+    <td><a href="delete/@Model.Id" class="btn btn-danger">Delete</a></td>
+</tr>

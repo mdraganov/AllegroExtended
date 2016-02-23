@@ -17,10 +17,12 @@ namespace AllegroExtended.Web.Areas.Administration.Controllers
 
     public class UserController : AdminBaseController
     {
+        private readonly IUserService users;
 
-        public UserController(IAccountRequestService requests)
+        public UserController(IAccountRequestService requests, IUserService users)
             : base(requests)
         {
+            this.users = users;
         }
 
         [HttpGet]
@@ -35,9 +37,9 @@ namespace AllegroExtended.Web.Areas.Administration.Controllers
         [HttpGet]
         public ActionResult All()
         {
-            var requests = this.requests.GetAll().To<AccountRequestViewModel>().ToList();
+            var users = this.users.GetAll().To<UserViewModel>().ToList();
 
-            return this.View(requests);
+            return this.View(users);
         }
 
         [HttpGet]

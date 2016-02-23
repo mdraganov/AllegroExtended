@@ -8,7 +8,7 @@
     using AllegroExtended.Services.Data;
     using AllegroExtended.Web.Areas.Administration.ViewModels;
     using AllegroExtended.Web.Controllers;
-    
+
     [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
     public abstract class AdminBaseController : BaseController
     {
