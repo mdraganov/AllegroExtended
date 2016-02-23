@@ -17,7 +17,11 @@
 
         public AccountRequest GetById(int id)
         {
-            return this.GetById(id);
+            var request = this.requests.GetById(id);
+            request.IsRead = true;
+            this.requests.Save();
+
+            return request;
         }
 
         public void Add(AccountRequest request)

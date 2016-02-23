@@ -200,6 +200,7 @@
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\AdministrationController.cs" />
     <Compile Include="Areas\Administration\Controllers\RequestController.cs" />
+    <Compile Include="Areas\Administration\ViewModels\AccountRequestDetailsViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\AccountRequestViewModel.cs" />
     <Compile Include="Areas\Users\UsersAreaRegistration.cs" />
     <Compile Include="Areas\Users\ViewModels\AccountRequestViewModel.cs" />
@@ -254,6 +255,8 @@
     <Content Include="Areas\Administration\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Administration\Views\Request\All.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\DisplayTemplates\AccountRequestViewModel.cshtml" />
+    <Content Include="Areas\Administration\Views\Request\AllUnread.cshtml" />
+    <Content Include="Areas\Administration\Views\Request\Details.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />

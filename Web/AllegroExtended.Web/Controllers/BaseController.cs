@@ -5,6 +5,7 @@
     using Infrastructure.Mapping;
     using AllegroExtended.Services.Web;
 
+    [Authorize]
     public abstract class BaseController : Controller
     {
         public ICacheService Cache { get; set; }

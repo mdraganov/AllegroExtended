@@ -1,0 +1,12 @@
+﻿@model AllegroExtended.Web.Areas.Administration.ViewModels.AccountRequestViewModel
+
+@{
+    Layout = null;
+}
+
+<tr>
+    <td>@this.ViewBag.Row</td>
+    <td>@Model.Email</td>
+    <td>@Model.Department</td>
+    <td><a href="details/@Model.Id" class="btn btn-info">Details</a></td>
+</tr>

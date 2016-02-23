@@ -1,0 +1,12 @@
+﻿@model AllegroExtended.Web.Areas.Administration.ViewModels.AccountRequestDetailsViewModel
+@{
+    ViewBag.Title = "Requests Details";
+}
+
+<h2 class="text-muted">@ViewBag.Title</h2>
+<div class="well">
+    Application request from: @Model.Email
+    User name: @Model.UserName
+    From department: @Model.Department
+    Additional notes: @Model.Remark
+</div>

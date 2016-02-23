@@ -8,6 +8,7 @@
     using AllegroExtended.Web.Areas.Users.ViewModels;
     using AllegroExtended.Web.Controllers;
 
+    [AllowAnonymous]
     public class RequestController : BaseController
     {
         private readonly IAccountRequestService requests;
@@ -39,7 +40,7 @@
 
                 this.requests.Add(newRequest);
 
-                this.TempData["Notification"] = "Request sent! You will receive an email with user name and password upon approval.";
+                this.TempData["Notification"] = "Request sent! You will receive an email with your user name and password upon approval.";
 
                 return this.Redirect("/account/login");
             }
