@@ -44,10 +44,12 @@ namespace AllegroExtended.Web.Areas.Administration.Controllers
 
                 this.TempData["Notification"] = "User Created!";
 
-                return this.Redirect("request/all");
+                return this.Redirect("/administration/request/all");
             }
 
-            this.TempData["Notification"] = "User Not Created!";
+            this.TempData["Notification"] = string.Join("; ", ModelState.Values
+                                                    .SelectMany(x => x.Errors)
+                                                    .Select(x => x.ErrorMessage)); //"An error occured. User Not Created!";
 
             return this.Redirect("/administration/request/all");
         }

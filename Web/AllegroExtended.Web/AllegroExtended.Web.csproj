@@ -199,7 +199,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\AdminBaseController.cs" />
-    <Compile Include="Areas\Administration\Controllers\AdministrationController.cs" />
+    <Compile Include="Areas\Administration\Controllers\HomePanelController.cs" />
     <Compile Include="Areas\Administration\Controllers\GroupController.cs" />
     <Compile Include="Areas\Administration\Controllers\RequestController.cs" />
     <Compile Include="Areas\Administration\Controllers\UserController.cs" />
@@ -267,6 +267,8 @@
     <Content Include="Areas\Administration\Views\Shared\DisplayTemplates\AccountRequestListViewModel.cshtml" />
     <Content Include="Areas\Administration\Views\User\All.cshtml" />
     <Content Include="Areas\Administration\Views\Request\_CreateUserPartial.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\_AdminPartial.cshtml" />
+    <Content Include="Areas\Administration\Views\HomePanel\Index.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />

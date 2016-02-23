@@ -1,7 +1,5 @@
 ﻿@model AllegroExtended.Web.Areas.Administration.ViewModels.AccountRequestDetailsViewModel
 
-<h2 class="text-muted">Create user from the above request: </h2>
-
 <form action="/Administration/User/Create" class="form form-horizontal" method="post" role="form" novalidate="novalidate">
     @Html.AntiForgeryToken()
     <div class="validation-summary-valid text-danger" data-valmsg-summary="true">

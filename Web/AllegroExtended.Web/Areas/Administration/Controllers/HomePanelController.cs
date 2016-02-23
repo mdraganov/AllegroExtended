@@ -6,11 +6,16 @@
     using AllegroExtended.Web.Controllers;
     using Services.Data;
 
-    public class AdministrationController : AdminBaseController
+    public class HomePanelController : AdminBaseController
     {
-        public AdministrationController(IAccountRequestService requests)
+        public HomePanelController(IAccountRequestService requests)
             : base(requests)
         {
+        }
+
+        public ActionResult Index()
+        {
+            return this.View();
         }
     }
 }

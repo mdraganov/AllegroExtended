@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using AllegroExtended.Common
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -15,11 +16,15 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("AllegroExtended", "Index", "Home", new { area = string.Empty }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Allegro Scheduler", "Index", "Home", new { area = string.Empty }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home", new { area = string.Empty }, null)</li>
+                    @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
+                    {
+                        <li>@Html.ActionLink("Administartion", "Index", "HomePanel", new { area = "Administration" }, null)</li>
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
