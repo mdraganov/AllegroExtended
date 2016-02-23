@@ -4,9 +4,13 @@
 
     using AllegroExtended.Common;
     using AllegroExtended.Web.Controllers;
+    using Services.Data;
 
-    [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
-    public class AdministrationController : BaseController
+    public class AdministrationController : AdminBaseController
     {
+        public AdministrationController(IAccountRequestService requests)
+            : base(requests)
+        {
+        }
     }
 }

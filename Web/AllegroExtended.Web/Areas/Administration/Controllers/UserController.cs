@@ -1,4 +1,9 @@
-﻿namespace AllegroExtended.Web.Areas.Administration.Controllers
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace AllegroExtended.Web.Areas.Administration.Controllers
 {
     using System.Linq;
     using System.Web.Mvc;
@@ -10,9 +15,10 @@
     using AllegroExtended.Web.Controllers;
     using Infrastructure.Mapping;
 
-    public class RequestController : AdminBaseController
+    public class UserController : AdminBaseController
     {
-        public RequestController(IAccountRequestService requests)
+
+        public UserController(IAccountRequestService requests)
             : base(requests)
         {
         }
@@ -41,5 +47,6 @@
 
             return this.View(requests);
         }
+
     }
 }
