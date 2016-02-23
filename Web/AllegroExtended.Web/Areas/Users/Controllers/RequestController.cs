@@ -35,7 +35,7 @@
                     Email = request.Email,
                     UserName = request.UserName,
                     Remark = request.Remark,
-                    Department = request.Department
+                    //Gruop = request.Group
                 };
 
                 this.requests.Add(newRequest);

@@ -16,15 +16,14 @@
         [MaxLength(GlobalConstants.UserNameMaxLength)]
         public string UserName { get; set; }
 
-        [Required]
-        [MinLength(2)]
-        [MaxLength(30)]
-        public string Department { get; set; }
-
         [MaxLength(200)]
         public string Remark { get; set; }
 
         [Required]
         public bool IsRead { get; set; }
+
+        public int GroupId { get; set; }
+
+        public virtual Group Gruop { get; set; }
     }
 }
