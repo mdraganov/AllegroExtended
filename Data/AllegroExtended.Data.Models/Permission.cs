@@ -15,5 +15,7 @@
         public virtual Group Group { get; set; }
 
         public int ClassEventId { get; set; }
+
+        public virtual ClassEvent ClassEvent { get; set; }
     }
 }
