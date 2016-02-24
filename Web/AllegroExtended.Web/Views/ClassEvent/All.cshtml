@@ -1,0 +1,32 @@
+﻿@model List<AllegroExtended.Web.ViewModels.ClassEvent.ClassEventViewModel>
+@{
+    ViewBag.Title = "All ClassEvents";
+}
+
+<h2 class="text-muted">@ViewBag.Title</h2>
+@if (this.TempData["Notification"] != null)
+{
+    <div class="alert alert-success alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert">x</button>
+        @this.TempData["Notification"]
+    </div>
+}
+<table class="table table-striped table-hover ">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Schedule</th>
+            <th>Next Run On</th>
+            <th>Last Run On</th>
+            <th>Options</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            @Html.DisplayFor(m => m[i], new { row = i + 1 });
+        }
+    </tbody>
+</table>

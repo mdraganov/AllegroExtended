@@ -1,0 +1,20 @@
+﻿@model AllegroExtended.Web.ViewModels.ClassEvent.ClassEventViewModel
+@using AllegroExtended.Common
+@using Microsoft.AspNet.Identity
+
+@{
+    Layout = null;
+}
+
+<tr>
+    <td>@this.ViewBag.Row</td>
+    <td>@Model.Email</td>
+    <td>@Model.UserName</td>
+    <td>@Model.Group</td>
+    <td>
+        @if (this.User.Identity.GetUserId() != Model.Id)
+        {
+            <a href="delete/@Model.Id" class="btn btn-danger">Delete</a>
+        }
+    </td>
+</tr>

@@ -6,6 +6,7 @@
 
     using AllegroExtended.Common;
     using AllegroExtended.Data.Common.Models;
+
     public class ClassEvent : BaseModel<int>, IAuditInfo
     {
         public ClassEvent()

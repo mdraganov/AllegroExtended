@@ -61,8 +61,8 @@
   <ItemGroup>
     <Compile Include="AccountRequest.cs" />
     <Compile Include="ApplicationUser.cs" />
+    <Compile Include="ClassEvent.cs" />
     <Compile Include="Group.cs" />
-    <Compile Include="Message.cs" />
     <Compile Include="Permission.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

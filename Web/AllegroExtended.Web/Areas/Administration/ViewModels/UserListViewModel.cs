@@ -1,10 +1,5 @@
 ﻿namespace AllegroExtended.Web.Areas.Administration.ViewModels
-{
-    using System;
-    using System.ComponentModel;
-    using System.ComponentModel.DataAnnotations;
-
-    using AllegroExtended.Common;
+{    
     using AllegroExtended.Data.Models;
     using AutoMapper;
     using Infrastructure.Mapping;

@@ -59,8 +59,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ClassEventService.cs" />
     <Compile Include="GroupService.cs" />
     <Compile Include="AccountRequestService.cs" />
+    <Compile Include="IClassEventService.cs" />
     <Compile Include="IGroupService.cs" />
     <Compile Include="IAccountRequestService.cs" />
     <Compile Include="IUserService.cs" />

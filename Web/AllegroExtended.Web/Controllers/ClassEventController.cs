@@ -4,19 +4,31 @@
     using System.Web.Mvc;
 
     using Infrastructure.Mapping;
+    using Microsoft.AspNet.Identity;
     using Services.Data;
-    using ViewModels.Home;
-       
+    using ViewModels.ClassEvent;
+
     public class ClassEventController : BaseController
     {
-        public ClassEventController()
+        private readonly IClassEventService events;
+        private readonly IUserService users;
+
+        public ClassEventController(IClassEventService events, IUserService users)
         {
+            this.events = events;
+            this.users = users;
         }
 
         [HttpGet]
         public ActionResult All()
         {
-            return this.View();
+            var currenUser = this.users.GetById(this.User.Identity.GetUserId());
+            var visibleEvents = this.events.GetAll()
+                                .Where(e => e.Permissions.Any(p => p.Group.Id == currenUser.GroupId))
+                                .To<ClassEventViewModel>()
+                                .ToList();
+
+            return this.View(visibleEvents);
         }
     }
 }
