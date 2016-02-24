@@ -89,7 +89,7 @@
 
             var controller = new UserController(new Mock<IAccountRequestService>().Object, usersServiceMock.Object, groupsServiceMock.Object);
             controller.WithCallTo(x => x.Create(testModel, 42))
-                .ShouldRedirectTo("/administration/request/all");
+                .ShouldRedirectTo(url: "/administration/request/all");
 
             usersServiceMock
                 .Verify(x => x.Add(It.Is<ApplicationUser>(u => u.Group.Name == testGroup.Name), It.Is<string>(p => p == testModel.Password)), Times.Once);

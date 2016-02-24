@@ -87,11 +87,13 @@
         [Test]
         public void DetailsShouldWorkCorrectly()
         {
+            var testId = 1;
+
             var requestServiceMock = new Mock<IAccountRequestService>();
-            requestServiceMock.Setup(x => x.GetById(It.IsAny<int>())).Returns(this.requests[0]);
+            requestServiceMock.Setup(x => x.GetById(It.Is<int>(i => i == testId))).Returns(this.requests[0]);
 
             var controller = new RequestController(requestServiceMock.Object);
-            controller.WithCallTo(x => x.Details(1))
+            controller.WithCallTo(x => x.Details(testId))
                 .ShouldRenderView("Details")
                 .WithModel<AccountRequestDetailsViewModel>(
                     viewModel =>
