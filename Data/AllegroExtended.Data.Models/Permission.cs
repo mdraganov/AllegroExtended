@@ -5,7 +5,7 @@
 
     using AllegroExtended.Data.Common.Models;
 
-    public class Permission : BaseModel<int>, IAuditInfo
+    public class Permission : BaseModel<int>
     {
         [Required]
         public bool IsReadOnly { get; set; }

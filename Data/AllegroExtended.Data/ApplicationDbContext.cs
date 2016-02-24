@@ -21,6 +21,8 @@
 
         public IDbSet<Permission> Permissions { get; set; }
 
+        public IDbSet<ClassEvent> ClassEvents { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

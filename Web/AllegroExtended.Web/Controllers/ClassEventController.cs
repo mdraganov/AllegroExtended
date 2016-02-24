@@ -5,13 +5,15 @@
 
     using Infrastructure.Mapping;
     using Services.Data;
-
-    public class MessageController : BaseController
+    using ViewModels.Home;
+       
+    public class ClassEventController : BaseController
     {
-        public MessageController()
+        public ClassEventController()
         {
         }
 
+        [HttpGet]
         public ActionResult All()
         {
             return this.View();
