@@ -17,11 +17,9 @@
 
         public Group GetById(int id)
         {
-            var request = this.groups.GetById(id);
+            var group = this.groups.GetById(id);
 
-            this.groups.Save();
-
-            return request;
+            return group;
         }
 
         public void Add(Group group)

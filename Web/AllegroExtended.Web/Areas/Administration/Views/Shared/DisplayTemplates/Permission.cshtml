@@ -1,0 +1,16 @@
+﻿@model AllegroExtended.Web.Areas.Administration.ViewModels.GroupDetailsViewModel
+@using AllegroExtended.Common
+@using Microsoft.AspNet.Identity
+
+@{
+    Layout = null;
+}
+
+<tr>
+    <td>@this.ViewBag.Row</td>
+    <td>@Model.Permissions[ViewBag.Row - 1].ClassEventId</td>
+    <td>@Model.Permissions[ViewBag.Row - 1].IsReadOnly</td>
+    <td>
+            <a href="/administration/permission/delete/@Model.Permissions[ViewBag.Row - 1].Id" class="btn btn-danger">Delete</a>
+    </td>
+</tr>

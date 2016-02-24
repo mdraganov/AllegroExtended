@@ -1,5 +1,6 @@
 ﻿namespace AllegroExtended.Web.Areas.Administration.Controllers
 {
+    using System;
     using System.Linq;
     using System.Web.Mvc;
 
@@ -23,8 +24,8 @@
         [HttpGet]
         public ActionResult Details(int id = 1)
         {
-            var request = this.requests.GetById(id);
-            var model = this.Mapper.Map<AccountRequestDetailsViewModel>(request);
+            var group = this.groups.GetById(id);
+            var model = this.Mapper.Map<GroupDetailsViewModel>(group);
 
             return this.View(model);
         }
@@ -32,7 +33,7 @@
         [HttpGet]
         public ActionResult All()
         {
-            var groups = this.groups.GetAll().To<GroupViewModel>().ToList();
+            var groups = this.groups.GetAll().To<GroupJsonViewModel>().ToList();
 
             return this.View(groups);
         }
@@ -44,6 +45,45 @@
             var groups = this.groups.GetAll().To<GroupJsonViewModel>().ToList();
 
             return this.Json(groups, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(string name)
+        {
+            try
+            {
+                this.groups.Add(new Group() { Name = name });
+
+                this.TempData["Notification"] = "Group Created!";
+
+                return this.Redirect("/administration/group/all");
+            }
+            catch (Exception ex)
+            {
+                this.TempData["Notification"] = ex.Message;
+
+                return this.Redirect("/administration/group/all");
+            }
+        }
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            try
+            {
+                this.groups.Delete(id);
+
+                this.TempData["Notification"] = "Group Deleted!";
+
+                return this.Redirect("/administration/group/all");
+            }
+            catch (Exception ex)
+            {
+                this.TempData["Notification"] = ex.Message;
+
+                return this.Redirect("/administration/group/all");
+            }
         }
     }
 }

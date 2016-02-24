@@ -13,5 +13,7 @@
         public int GroupId { get; set; }
 
         public virtual Group Group { get; set; }
+
+        public int ClassEventId { get; set; }
     }
 }

@@ -205,7 +205,7 @@
     <Compile Include="Areas\Administration\Controllers\UserController.cs" />
     <Compile Include="Areas\Administration\ViewModels\AccountRequestDetailsViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\GroupJsonViewModel.cs" />
-    <Compile Include="Areas\Administration\ViewModels\GroupViewModel.cs" />
+    <Compile Include="Areas\Administration\ViewModels\GroupDetailsViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\UserListViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\UserViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\AccountRequestListViewModel.cs" />
@@ -261,7 +261,7 @@
     <Content Include="Areas\Users\Views\Shared\EditorTemplates\AccountRequestViewModel.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Administration\Views\Request\All.cshtml" />
-    <Content Include="Areas\Administration\Views\Shared\DisplayTemplates\UserListViewModel.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\DisplayTemplates\GroupJsonViewModel.cshtml" />
     <Content Include="Areas\Administration\Views\Request\AllUnread.cshtml" />
     <Content Include="Areas\Administration\Views\Request\Details.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\DisplayTemplates\AccountRequestListViewModel.cshtml" />
@@ -269,6 +269,11 @@
     <Content Include="Areas\Administration\Views\Request\_CreateUserPartial.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\_AdminPartial.cshtml" />
     <Content Include="Areas\Administration\Views\HomePanel\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Group\All.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\DisplayTemplates\UserListViewModel.cshtml" />
+    <Content Include="Areas\Administration\Views\Group\Details.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\DisplayTemplates\Permission.cshtml" />
+    <Content Include="Areas\Administration\Views\Group\_PermissionsPartial.cshtml" />
     <None Include="Scripts\jquery-2.2.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.0.js" />
     <Content Include="Scripts\jquery-2.2.0.min.js" />

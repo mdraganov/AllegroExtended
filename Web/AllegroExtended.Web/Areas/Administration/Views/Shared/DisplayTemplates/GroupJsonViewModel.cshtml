@@ -1,0 +1,16 @@
+﻿@model AllegroExtended.Web.Areas.Administration.ViewModels.GroupJsonViewModel
+@using AllegroExtended.Common
+@using Microsoft.AspNet.Identity
+
+@{
+    Layout = null;
+}
+
+<tr>
+    <td>@this.ViewBag.Row</td>
+    <td>@Model.Name</td>
+    <td>
+        <a href="details/@Model.Id" class="btn btn-info">Details</a>
+        <a href="delete/@Model.Id" class="btn btn-danger">Delete</a>
+    </td>
+</tr>
