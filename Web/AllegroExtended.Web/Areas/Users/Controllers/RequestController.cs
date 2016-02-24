@@ -44,7 +44,7 @@
 
                 this.requests.Add(newRequest);
 
-                this.TempData["Notification"] = "Request sent! You will receive an email with your user name and password upon approval.";
+                this.TempData["Notification"] = "Request sent! You will receive an email with username and password upon approval.";
 
                 return this.Redirect("/account/login");
             }
