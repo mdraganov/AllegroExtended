@@ -44,19 +44,44 @@
                     new ClassEvent()
                     {
                         Name = "Valuation",
-                        Description = "Calculates the whole potrfolio valuation"
+                        Description = "Calculates the whole potrfolio valuation",
+                        Schedule = "Weekly"
                     });
                 events.Add(
                     new ClassEvent()
                     {
                         Name = "Invoice",
-                        Description = "Calculates invoices for the month"
+                        Description = "Calculates invoices for the month",
+                        Schedule = "Monthly",
+                        MonthlyDate = 28
                     });
                 events.Add(
                     new ClassEvent()
                     {
                         Name = "Ticket",
-                        Description = "Processes tickets for the day"
+                        Description = "Processes tickets for the day",
+                        Schedule = "Weekly"
+                    });
+                events.Add(
+                    new ClassEvent()
+                    {
+                        Name = "Import Forward Prices",
+                        Description = "Import quotes from fx quotes proider",
+                        Schedule = "Weekly"
+                    });
+                events.Add(
+                    new ClassEvent()
+                    {
+                        Name = "P&L",
+                        Description = "Calculates Profit and Loss",
+                        Schedule = "Monthly"
+                    });
+                events.Add(
+                    new ClassEvent()
+                    {
+                        Name = "Risk Exposure",
+                        Description = "Calculates Credit Risk Exposure",
+                        Schedule = "Monthly"
                     });
 
                 foreach (var ev in events)
@@ -70,6 +95,9 @@
                 context.Permissions.Add(new Permission { ClassEvent = events[0], Group = groups[5], IsReadOnly = false });
                 context.Permissions.Add(new Permission { ClassEvent = events[1], Group = groups[5], IsReadOnly = true });
                 context.Permissions.Add(new Permission { ClassEvent = events[2], Group = groups[5], IsReadOnly = false });
+                context.Permissions.Add(new Permission { ClassEvent = events[3], Group = groups[5], IsReadOnly = false });
+                context.Permissions.Add(new Permission { ClassEvent = events[4], Group = groups[5], IsReadOnly = false });
+                context.Permissions.Add(new Permission { ClassEvent = events[5], Group = groups[5], IsReadOnly = false });
 
                 context.SaveChanges();
 
