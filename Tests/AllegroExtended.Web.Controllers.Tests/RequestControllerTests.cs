@@ -33,6 +33,19 @@
                 Email = "a@a.com",
                 Group = new Group() { Name = "Test Group" }
             });
+            this.requests.Add(new AccountRequest()
+            {
+                UserName = "test2",
+                Email = "b@b.com",
+                Group = new Group() { Name = "Test Group 2" }
+            });
+            this.requests.Add(new AccountRequest()
+            {
+                IsRead = true,
+                UserName = "test3",
+                Email = "c@c.com",
+                Group = new Group() { Name = "Test Group 3" }
+            });
         }
 
         [Test]
@@ -49,7 +62,42 @@
                     viewModel =>
                         {
                             Assert.AreEqual(this.requests[0].UserName, viewModel[0].UserName);
+                            Assert.AreEqual(this.requests.Count, viewModel.Count);
                         }).AndNoModelErrors();
+        }
+
+        [Test]
+        public void AllUnreadShouldWorkCorrectly()
+        {
+            var requestServiceMock = new Mock<IAccountRequestService>();
+            requestServiceMock.Setup(x => x.GetAll()).Returns(this.requests.AsQueryable());
+            requestServiceMock.Setup(x => x.GetAllUnread()).Returns(this.requests.AsQueryable().Where(x => !x.IsRead));
+
+            var controller = new RequestController(requestServiceMock.Object);
+            controller.WithCallTo(x => x.AllUnread())
+                .ShouldRenderView("AllUnread")
+                .WithModel<List<AccountRequestListViewModel>>(
+                    viewModel =>
+                    {
+                        Assert.AreEqual(this.requests[0].UserName, viewModel[0].UserName);
+                        Assert.AreEqual(2, viewModel.Count);
+                    }).AndNoModelErrors();
+        }
+
+        [Test]
+        public void DetailsShouldWorkCorrectly()
+        {
+            var requestServiceMock = new Mock<IAccountRequestService>();
+            requestServiceMock.Setup(x => x.GetById(It.IsAny<int>())).Returns(this.requests[0]);
+
+            var controller = new RequestController(requestServiceMock.Object);
+            controller.WithCallTo(x => x.Details(1))
+                .ShouldRenderView("Details")
+                .WithModel<AccountRequestDetailsViewModel>(
+                    viewModel =>
+                    {
+                        Assert.AreEqual(this.requests[0].UserName, viewModel.UserName);
+                    }).AndNoModelErrors();
         }
     }
 }
