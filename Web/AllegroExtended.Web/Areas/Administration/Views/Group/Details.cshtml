@@ -1,14 +1,36 @@
 ﻿@model AllegroExtended.Web.Areas.Administration.ViewModels.GroupDetailsViewModel
+@using AllegroExtended.Data.Models
 @{
     ViewBag.Title = "Group Details";
+    var events = this.ViewBag.Events as List<ClassEvent>;
 }
 
 <h2 class="text-muted">@ViewBag.Title</h2>
 <div class="well">
-    <h3 class="text-muted">Users in Group: 
+    <h3 class="text-muted">
+        Users in Group:
         <br />
         <i class="text-info">@Model.UserNames</i>
     </h3>
     @Html.Partial("_PermissionsPartial")
 </div>
-<a href="/administration/permission/add?groupId=@Model.Id" class="btn btn-primary btn-block">Add new permission</a>
+
+<h3 class="text-info">Add new permission</h3>
+<form action="/Administration/Group/AddPermission/@Model.Id" class="form-inline well" method="post" role="form">
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <label for="readOnly" class="control-label">Read only</label>
+        <input type="checkbox" name="readOnly" value="true">
+    </div>
+    <div class="form-group">
+        <select class="form-control" id="dd-groups" name="eventId" aria-invalid="false">
+            @foreach (var ev in events)
+            {
+                <option value="@ev.Id">@ev.Name</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <input type="submit" class="btn btn-primary" value="Add" />
+    </div>
+</form>

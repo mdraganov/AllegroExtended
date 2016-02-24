@@ -1,20 +1,80 @@
 ﻿@model AllegroExtended.Web.ViewModels.ClassEvent.ClassEventViewModel
-@using AllegroExtended.Common
-@using Microsoft.AspNet.Identity
-
-@{
-    Layout = null;
+@using AllegroExtended.Data.Models
+@{ 
+    var permissions = this.ViewBag.Permissions as ICollection<Permission>;
 }
 
 <tr>
     <td>@this.ViewBag.Row</td>
-    <td>@Model.Email</td>
-    <td>@Model.UserName</td>
-    <td>@Model.Group</td>
+    <td>@Model.Name</td>
+    <td>@Model.Description</td>
+    <td>@Model.Schedule on:</td>
     <td>
-        @if (this.User.Identity.GetUserId() != Model.Id)
+        @if (@Model.Schedule == "Monthly")
         {
-            <a href="delete/@Model.Id" class="btn btn-danger">Delete</a>
+            @:day of month @Model.MonthlyDate
+        }
+        else if (@Model.Schedule == "Once")
+        {
+            @Model.Date
+        }
+        else
+        {
+            <label for="mon">Mon</label>
+            <input type="checkbox" name="mon" disabled @if (Model.Mon == true)
+            { 
+                @:checked 
+            }/>
+
+            <label for="tu">Tu</label>
+
+            <input type="checkbox" name="tu" disabled @if (Model.Tu == true)
+            { 
+                @:checked 
+            }/>
+
+            <label for="wed">Wed</label>
+
+            <input type="checkbox" name="wed" disabled @if (Model.Wed == true)
+            { 
+                @:checked 
+            }/>
+
+            <label for="thu">Thu</label>
+
+            <input type="checkbox" name="thu" disabled @if (Model.Thu == true)
+            { 
+                @:checked 
+            }/>
+
+            <label for="fri">Fri</label>
+
+            <input type="checkbox" name="fri" disabled @if (Model.Fri == true)
+            { 
+                @:checked 
+            }/>
+
+            <label for="sat">Sat</label>
+
+            <input type="checkbox" name="sat" disabled @if (Model.Sat == true)
+            { 
+                @:checked 
+            }/>
+
+            <label for="sun">Sun</label>
+
+            <input type="checkbox" name="sun" disabled @if (Model.Sun == true)
+            { 
+                @:checked 
+            }/>
+        }
+    </td>
+    <td>@Model.LastRunOn</td>
+    <td>
+        @if (!permissions.Where(p => p.ClassEvent.Id == Model.Id).Select(x => x.IsReadOnly).FirstOrDefault())
+        {
+            <a href="edit/@Model.Id" class="btn btn-warning">Edit</a>
+            <a href="trigger/@Model.Id" class="btn btn-info">Trigger</a>
         }
     </td>
 </tr>

@@ -8,6 +8,8 @@
     {
         ApplicationUser GetById(string id);
 
+        IQueryable<ApplicationUser> GetPermissionsById(string id);
+
         IQueryable<ApplicationUser> GetAll();
 
         void Add(ApplicationUser user, string password);

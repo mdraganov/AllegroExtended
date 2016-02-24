@@ -1,4 +1,4 @@
-﻿@model AllegroExtended.Web.Areas.Administration.ViewModels.GroupDetailsViewModel
+﻿@model AllegroExtended.Data.Models.Permission
 @using AllegroExtended.Common
 @using Microsoft.AspNet.Identity
 
@@ -8,9 +8,9 @@
 
 <tr>
     <td>@this.ViewBag.Row</td>
-    <td>@Model.Permissions[ViewBag.Row - 1].ClassEventId</td>
-    <td>@Model.Permissions[ViewBag.Row - 1].IsReadOnly</td>
+    <td>@Model.ClassEvent.Name</td>
+    <td>@Model.IsReadOnly</td>
     <td>
-            <a href="/administration/permission/delete/@Model.Permissions[ViewBag.Row - 1].Id" class="btn btn-danger">Delete</a>
+        <a href="/Administration/Group/DeletePermission/@Model.Id" class="btn btn-danger">Delete</a>
     </td>
 </tr>

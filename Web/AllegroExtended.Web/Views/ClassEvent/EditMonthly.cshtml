@@ -1,0 +1,32 @@
+﻿@model List<AllegroExtended.Web.ViewModels.ClassEvent.ClassEventViewModel>
+@{
+    ViewBag.Title = "Change Event Schedule";
+}
+
+@Html.Partial("_AllPartial")
+
+<div class="modal show">
+    <div class="modal-dialog">
+        <section id="loginForm" class="modal-content">
+            <h3 class="text-info text-center">@ViewBag.Title </h3>
+            <hr />
+            <a href="/classevent/edit/@ViewBag.Id" class="btn-primary btn-block text-center">Run Weekly</a>
+            <a href="/classevent/editonce/@ViewBag.Id" class="btn-primary btn-block text-center">Run Once</a>
+            <hr />
+            <p class="text-info text-center">Run every month on</p>
+            <form action="/classevent/editmonthly/@ViewBag.Id" class="form text-center" method="post" role="form">
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    <label for="MonthlyDate">Date</label>
+                    <input type="number" min="1" max="31" required name="MonthlyDate" />
+                </div>
+                <div class="form-group">
+                    <div class="bnn-group">
+                        <a href="/classevent/all" class="btn btn-warning">&emsp;&nbsp;Cancel&nbsp;&emsp;</a>
+                        <input type="submit" class="btn btn-primary" value="Save Changes">
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>

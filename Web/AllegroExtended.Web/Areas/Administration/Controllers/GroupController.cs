@@ -14,11 +14,15 @@
     public class GroupController : AdminBaseController
     {
         private readonly IGroupService groups;
+        private readonly IClassEventService events;
+        private readonly IPermissionService permissions;
 
-        public GroupController(IAccountRequestService requests, IGroupService groups)
+        public GroupController(IAccountRequestService requests, IGroupService groups, IClassEventService events, IPermissionService permissions)
             : base(requests)
         {
             this.groups = groups;
+            this.events = events;
+            this.permissions = permissions;
         }
 
         [HttpGet]
@@ -26,6 +30,7 @@
         {
             var group = this.groups.GetById(id);
             var model = this.Mapper.Map<GroupDetailsViewModel>(group);
+            this.ViewBag.Events = this.events.GetAll().ToList();
 
             return this.View(model);
         }
@@ -56,6 +61,53 @@
                 this.groups.Add(new Group() { Name = name });
 
                 this.TempData["Notification"] = "Group Created!";
+
+                return this.Redirect("/administration/group/all");
+            }
+            catch (Exception ex)
+            {
+                this.TempData["Notification"] = ex.Message;
+
+                return this.Redirect("/administration/group/all");
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddPermission(int id, int eventId, string readOnly)
+        {
+            try
+            {
+                var ev = this.events.GetById(eventId);
+                var group = this.groups.GetById(id);
+                var isReadOnly = false;
+                if (readOnly == "true")
+                {
+                    isReadOnly = true;
+                }
+
+                this.permissions.Add(new Permission { IsReadOnly = isReadOnly, ClassEvent = ev, Group = group });
+
+                this.TempData["Notification"] = "Permission Added!";
+
+                return this.Redirect("/administration/group/details/" + id);
+            }
+            catch (Exception ex)
+            {
+                this.TempData["Notification"] = ex.Message;
+
+                return this.Redirect("/administration/group/details/" + id);
+            }
+        }
+
+        [HttpGet]
+        public ActionResult DeletePermission(int id)
+        {
+            try
+            {
+                this.permissions.Delete(id);
+
+                this.TempData["Notification"] = "Permission Deleted!";
 
                 return this.Redirect("/administration/group/all");
             }

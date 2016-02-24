@@ -59,5 +59,10 @@
         {
             return this.DbSet.FirstOrDefault(u => u.Id == id);
         }
+
+        public IQueryable<ApplicationUser> GetPermissionsById(string id)
+        {
+            return this.DbSet.Where(x => x.Id == id).Include(y => y.Group.Permissions);
+        }
     }
 }

@@ -1,0 +1,44 @@
+﻿@model List<AllegroExtended.Web.ViewModels.ClassEvent.ClassEventViewModel>
+@{
+    ViewBag.Title = "Change Event Schedule";
+}
+
+@Html.Partial("_AllPartial")
+
+<div class="modal show">
+    <div class="modal-dialog">
+        <section id="loginForm" class="modal-content">
+            <h3 class="text-info text-center">@ViewBag.Title </h3>
+            <hr />
+            <a href="/classevent/editmonthly/@ViewBag.Id" class="btn-primary btn-block text-center">Run Monthly</a>
+            <a href="/classevent/editonce/@ViewBag.Id" class="btn-primary btn-block text-center">Run Once</a>
+            <hr />
+            <p class="text-info text-center">Run every week on</p>
+            <form action="/classevent/edit/@ViewBag.Id" class="form text-center" method="post" role="form">
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    <label for="mon">Mon</label>
+                    <input type="checkbox" name="mon" />
+                    <label for="tu">Tu</label>
+                    <input type="checkbox" name="tu" />
+                    <label for="wed">Wed</label>
+                    <input type="checkbox" name="wed" />
+                    <label for="thu">Thu</label>
+                    <input type="checkbox" name="thu" />
+                    <label for="fri">Fri</label>
+                    <input type="checkbox" name="fri" />
+                    <label for="sat">Sat</label>
+                    <input type="checkbox" name="sat" />
+                    <label for="sun">Sun</label>
+                    <input type="checkbox" name="sun" />
+                </div>
+                <div class="form-group">
+                    <div class="bnn-group">
+                        <a href="/classevent/all" class="btn btn-warning">&emsp;&nbsp;Cancel&nbsp;&emsp;</a>
+                        <input type="submit" class="btn btn-primary" value="Save Changes">
+                    </div>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>

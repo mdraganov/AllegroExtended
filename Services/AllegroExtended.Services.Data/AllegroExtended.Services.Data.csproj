@@ -60,9 +60,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClassEventService.cs" />
+    <Compile Include="PermissionService.cs" />
     <Compile Include="GroupService.cs" />
     <Compile Include="AccountRequestService.cs" />
     <Compile Include="IClassEventService.cs" />
+    <Compile Include="IPermissionService.cs" />
     <Compile Include="IGroupService.cs" />
     <Compile Include="IAccountRequestService.cs" />
     <Compile Include="IUserService.cs" />

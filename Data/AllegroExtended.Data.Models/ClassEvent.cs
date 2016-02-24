@@ -23,9 +23,25 @@
 
         public string Schedule { get; set; }
 
-        public DateTime NextRunOn { get; set; }
+        public bool? Mon { get; set; }
 
-        public DateTime LastRunOn { get; set; }
+        public bool? Tu { get; set; }
+
+        public bool? Wed { get; set; }
+
+        public bool? Thu { get; set; }
+
+        public bool? Fri { get; set; }
+
+        public bool? Sat { get; set; }
+
+        public bool? Sun { get; set; }
+
+        public int? MonthlyDate { get; set; }
+
+        public DateTime? Date { get; set; }
+
+        public DateTime? LastRunOn { get; set; }
 
         public virtual ICollection<Permission> Permissions { get; set; }
     }

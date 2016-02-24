@@ -230,6 +230,7 @@
     <Compile Include="ViewModels\Account\ResetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Account\SendCodeViewModel.cs" />
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
+    <Compile Include="ViewModels\ClassEvent\ClassEventEditViewModel.cs" />
     <Compile Include="ViewModels\ClassEvent\ClassEventViewModel.cs" />
     <Compile Include="ViewModels\Home\IndexViewModel.cs" />
     <Compile Include="ViewModels\Manage\AddPhoneNumberViewModel.cs" />
@@ -244,6 +245,7 @@
     <Compile Include="ViewModels\Manage\VerifyPhoneNumberViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\allegro-development-squarelogo-1452869183027.png" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -321,9 +323,11 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Scripts\jquery-2.2.0.min.map" />
     <Content Include="Views\Shared\DisplayTemplates\ClassEventViewModel.cshtml" />
-    <Content Include="Views\ClassEvent\_CreateUserPartial.cshtml" />
+    <Content Include="Views\ClassEvent\_AllPartial.cshtml" />
     <Content Include="Views\ClassEvent\All.cshtml" />
-    <Content Include="Views\ClassEvent\Details.cshtml" />
+    <Content Include="Views\ClassEvent\Edit.cshtml" />
+    <Content Include="Views\ClassEvent\EditOnce.cshtml" />
+    <Content Include="Views\ClassEvent\EditMonthly.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
